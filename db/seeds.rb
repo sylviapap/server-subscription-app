@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.delete_all
+Subscription.delete_all
+
+user = User.create(username: 'user1', password: 'pw')
+
+subscription = Subscription.create(company: 'Netflix', cost: 11.99)

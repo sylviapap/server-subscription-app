@@ -1,4 +1,4 @@
-class UserSubscriptionsController < ApplicationController
+class Api::V1::UserSubscriptionsController < ApplicationController
     def index
         user_subscriptions = UserSubscription.all
         render json: user_subscriptions
