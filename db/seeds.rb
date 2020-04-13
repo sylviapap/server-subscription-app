@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+UserSubscription.delete_all
 User.delete_all
 Subscription.delete_all
-UserSubscription.delete_all
 
 user = User.create(username: 'user1', password: 'pw')
 
