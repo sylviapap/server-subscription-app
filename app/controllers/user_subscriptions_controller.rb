@@ -14,7 +14,6 @@ class UserSubscriptionsController < ApplicationController
         user = User.find(params[:user_id])
         subscription = Subscription.find(params[:subscription_id])
         start_date = (params[:start_date])
-        end_date = (params[:end_date])
         
         user_subscription = UserSubscription.new(user_subscription_params)
         if user_subscription.save
@@ -28,6 +27,6 @@ class UserSubscriptionsController < ApplicationController
     private
 
     def user_subscription_params
-        params.require(:user_subscription).permit(:user_id, :subscription_id, :start_date, :end_date)
+        params.require(:user_subscription).permit(:user_id, :subscription_id, :start_date)
     end
 end
