@@ -8,7 +8,10 @@
 
 User.delete_all
 Subscription.delete_all
+UserSubscription.delete_all
 
 user = User.create(username: 'user1', password: 'pw')
 
 subscription = Subscription.create(company: 'Netflix', cost: 11.99)
+
+user_subscription = UserSubscription.create(user_id: user.id, subscription_id: subscription.id)
