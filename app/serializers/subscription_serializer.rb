@@ -1,3 +1,4 @@
 class SubscriptionSerializer < ActiveModel::Serializer
-  attributes :id
+  has_many :user_subscriptions
+  attributes :id, :company, :cost
 end
