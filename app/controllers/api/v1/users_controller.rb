@@ -14,7 +14,12 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-      @user = User.find_or_create_by(username: user_params[:username])
+      @user = User.create(user_params)
+      if @user.valid?
+        render json: @user, status: :accepted
+      else
+        render json: { errors: @user.errors.full_messages }, status: :unprocessible_entity
+      end
     end
 
     def edit
@@ -35,7 +40,7 @@ class Api::V1::UsersController < ApplicationController
     private
   
     def user_params
-        params.require(:user).permit(:username, :password)
+      params.require(:user).permit(:username, :password)
     end
   
     def find_user
