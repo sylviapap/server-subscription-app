@@ -14,12 +14,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        @user = User.find_or_create_by(name: user_params[:name])
-        if user
-            render json: @user
-        else
-            render json: {message: "Couldn't create user"}
-        end
+      @user = User.find_or_create_by(username: user_params[:username])
     end
 
     def edit
@@ -40,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
     private
   
     def user_params
-        params.require(:user).permit(:name)
+        params.require(:user).permit(:username, :password)
     end
   
     def find_user
