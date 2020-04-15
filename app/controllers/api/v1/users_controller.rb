@@ -8,6 +8,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def show
+      render json: user
     end
 
     def new
@@ -19,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
         token = issue_token(user)
         render json: { user: UserSerializer.new(user), jwt: token }, status: :created
       else
-        render json: { error: 'failed to create user' }, status: :not_acceptable
+        render json: { errors: user.errors.full_messages }, status: :not_acceptable
       end
     end
 

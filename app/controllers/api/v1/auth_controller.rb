@@ -2,22 +2,28 @@ class Api::V1::AuthController < ApplicationController
     # skip_before_action :authorized, only: [:create]
 
     def create
-        user = User.find_by(username: params[:username])
+        user = User.find_by(username: user_login_params[:username])
         
-        if user && user.authenticate(params[:password])
+        if user && user.authenticate(user_login_params[:password])
           my_token = issue_token(user)
     
-          render json: {id: user.id, username: user.username, token: my_token}
+          render json: {id: user.id, username: user.username, token: my_token}, status: :accepted
         else
-          render json: {error: 'That user could not be found'}, status: 401
+          render json: {error: 'User could not be logged in'}, status: :unauthorized
         end
-      end
+    end
     
-      def show
+    def show
         if logged_in?
-          render json: { id: current_user.id, username: current_user.username }
+          render json: { id: current_user.id, username: current_user.username }, status: :accepted
         else
-          render json: {error: 'No user could be found'}, status: 401
+          render json: {error: 'No user found'}, status: :unauthorized
         end
-      end
+    end
+
+    private
+ 
+    def user_login_params
+        params.require(:user).permit(:username, :password)
+    end
 end

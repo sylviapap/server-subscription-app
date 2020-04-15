@@ -14,11 +14,11 @@ class ApplicationController < ActionController::API
     end
     
     def decoded_token
-    begin
-        JWT.decode(token, "secret", true, { :algorithm => 'HS256' })
-    rescue JWT::DecodeError
-        [{}]
-    end
+        begin
+            JWT.decode(token, "secret", true, { :algorithm => 'HS256' })
+        rescue JWT::DecodeError
+            [{}]
+        end
     end
 
     def user_id
