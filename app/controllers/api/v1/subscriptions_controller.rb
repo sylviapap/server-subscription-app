@@ -17,6 +17,9 @@ class Api::V1::SubscriptionsController < ApplicationController
         render json: subscription
     end
 
+    def destroy
+    end
+
     private
 
     def subscription_params
