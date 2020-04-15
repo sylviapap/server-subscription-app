@@ -1,3 +1,3 @@
 class Subscription < ApplicationRecord
-    has_many :user_subscriptions, dependent: :destroy
+    has_many :user_subscriptions
 end
