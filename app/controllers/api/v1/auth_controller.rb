@@ -7,7 +7,7 @@ class Api::V1::AuthController < ApplicationController
         if user && user.authenticate(user_login_params[:password])
           my_token = issue_token(user)
     
-          render json: {id: user.id, username: user.username, token: my_token}, status: :accepted
+          render json: {id: user.id, username: user.username, user: UserSerializer.new(user), token: my_token}, status: :accepted
         else
           render json: {error: 'User could not be logged in'}, status: :unauthorized
         end
