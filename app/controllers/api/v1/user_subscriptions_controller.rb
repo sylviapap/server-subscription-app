@@ -21,8 +21,19 @@ class Api::V1::UserSubscriptionsController < ApplicationController
         else
             render json: {message: "UserSubscription error"}
         end
-
     end
+
+    def edit
+    end
+
+    def update
+        user_subscription = UserSubscription.update(user_subscription_params)
+        if user_subscription.save
+          render json: user_subscription, status: :accepted
+        else
+          render json: { errors: user_subscription.errors.full_messages }, status: :unprocessible_entity
+        end
+      end
 
     def destroy
         user_subscription = UserSubscription.find(params[:id])
