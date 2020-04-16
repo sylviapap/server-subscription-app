@@ -25,6 +25,8 @@ class Api::V1::UserSubscriptionsController < ApplicationController
     end
 
     def destroy
+        user_subscription = UserSubscription.find(params[:id])
+        user_subscription.destroy
     end
 
     private
