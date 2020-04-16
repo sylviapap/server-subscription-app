@@ -24,6 +24,9 @@ class Api::V1::UserSubscriptionsController < ApplicationController
 
     end
 
+    def destroy
+    end
+
     private
 
     def user_subscription_params
