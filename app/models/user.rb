@@ -4,8 +4,8 @@ class User < ApplicationRecord
     validates :username, uniqueness: { case_sensitive: false }
     validates :username, presence: true
 
-    has_many :user_subscriptions
-    has_many :subscriptions, through: :user_subscriptions
+    has_many :user_subscriptions, dependent: :destroy
+    has_many :subscriptions, through: :user_subscriptions, dependent: :destroy
 
     accepts_nested_attributes_for :user_subscriptions
 end
