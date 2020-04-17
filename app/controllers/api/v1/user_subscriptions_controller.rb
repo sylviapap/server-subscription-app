@@ -28,7 +28,7 @@ class Api::V1::UserSubscriptionsController < ApplicationController
 
     def update
         user_subscription = UserSubscription.update(user_subscription_params)
-        if user_subscription.save
+        if user_subscription
           render json: user_subscription, status: :accepted
         else
           render json: { errors: user_subscription.errors.full_messages }, status: :unprocessible_entity
