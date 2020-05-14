@@ -1,24 +1,8 @@
-# README
+# Subscription Manager / "Subscribr"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mod 4 Flatiron React Group Project
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Live Site: https://subscrbr.herokuapp.com/
+Partner: https://github.com/JABermudez11
+Backend repo: https://github.com/sylviapap/server-subscription-app
+Frontend repo: https://github.com/sylviapap/client-subscription-app
